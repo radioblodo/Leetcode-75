@@ -1,0 +1,31 @@
+class Solution(object):
+    def vowelOrNot(self, c):
+        if c in ['a', 'e', 'i', 'o', 'u']:
+            return 1; 
+        else:
+            return 0; 
+
+    def maxVowels(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        max_vowels, vowels_count = 0, 0; 
+
+        #count the number of vowels in the first k letters
+        for i in range(k):
+            if s[i] in ['a', 'e', 'i', 'o', 'u']:
+                vowels_count += 1; 
+
+        max_vowels = vowels_count; 
+
+        for i in range(len(s)-k):
+            if self.vowelOrNot(s[i]):
+                vowels_count = vowels_count - 1 + self.vowelOrNot(s[k+i]);
+            else:
+                vowels_count = vowels_count + self.vowelOrNot(s[k+i]);
+            
+            max_vowels = max(max_vowels, vowels_count);
+        
+        return max_vowels; 
