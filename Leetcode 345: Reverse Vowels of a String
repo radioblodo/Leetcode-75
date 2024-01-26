@@ -1,0 +1,26 @@
+class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        vowels = []; 
+
+        for char in s:
+            if char in ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']:
+                vowels.append(char); 
+
+        
+        vowels.reverse(); 
+
+        i = 0; 
+        result = ""; 
+
+        for char in s:
+            if char not in ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']:
+                result += char; 
+            else:
+                result += vowels[i]; 
+                i += 1;  
+        
+        return result; 
